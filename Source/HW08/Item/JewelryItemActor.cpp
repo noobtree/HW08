@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "JewelryItemActor.h"
@@ -15,7 +15,7 @@ void AJewelryItemActor::UseItem(APlayerCharacter* activator)
 	{
 		if (AFPSGameState* gamestate = GetWorld()->GetGameStateChecked<AFPSGameState>())
 		{
-			gamestate->score += scoreAmount;
+			gamestate->AddScore(scoreAmount);
 			DestroyItem();
 		}
 	}

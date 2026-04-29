@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "ItemActor.h"
@@ -25,7 +25,7 @@ AItemActor::AItemActor()
 
 	meshComponent->SetRelativeLocation(FVector(0, 0, -80));
 
-	lifeTime = 5;
+	lifeTime = 30;
 }
 
 // Called when the game starts or when spawned
@@ -33,9 +33,9 @@ void AItemActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// collision ¹İ°æ ¼³Á¤
+	// collision ë°˜ê²½ ì„¤ì •
 	collision->SetSphereRadius(collisionRadius);
-	// lifeTime ÀÌÈÄ ¾×ÅÍ ÆÄ±« ¿¹¾à
+	// lifeTime ì´í›„ ì•¡í„° íŒŒê´´ ì˜ˆì•½
 	GetWorldTimerManager().SetTimer(destroyTimer, this, &AItemActor::DestroyItem, lifeTime);
 }
 
@@ -48,26 +48,27 @@ void AItemActor::Tick(float DeltaTime)
 
 void AItemActor::UseItem(APlayerCharacter* activator)
 {
-	// ¾ÆÀÌÅÛ È¿°ú Àû¿ë
+	// ì•„ì´í…œ íš¨ê³¼ ì ìš©
 	UE_LOG(LogTemp, Warning, TEXT("Trying to use Item %s"), *itemName.ToString());
 	DestroyItem();
 }
 
 void AItemActor::DestroyItem()
 {
-	// Å¸ÀÌ¸Ó ÇØÁ¦
+	// íƒ€ì´ë¨¸ í•´ì œ
 	GetWorldTimerManager().ClearTimer(destroyTimer);
+
 	Destroy();
 }
 
 void AItemActor::OnItemBeginOverlap(UPrimitiveComponent* overlapComponent, AActor* otherActor, UPrimitiveComponent* otherComponent, int32 otherBodyIndex, bool bFromSweep, const FHitResult& sweepResult)
 {
-	// Overlap ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅ² ¾×ÅÍ°¡ ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍÀÎ °æ¿ì ¾ÆÀÌÅÛ »ç¿ë
+	// Overlap ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚¨ ì•¡í„°ê°€ í”Œë ˆì´ì–´ ìºë¦­í„°ì¸ ê²½ìš° ì•„ì´í…œ ì‚¬ìš©
 
-	// ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ·Î ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅ² ¾×ÅÍ º¯È¯ ½Ãµµ
+	// í”Œë ˆì´ì–´ ìºë¦­í„°ë¡œ ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚¨ ì•¡í„° ë³€í™˜ ì‹œë„
 	if (APlayerCharacter* player = Cast<APlayerCharacter>(otherActor))
 	{
-		// ¾ÆÀÌÅÛÀÌ »ç¿ëµÇµµ·Ï ÇÔ¼ö È£Ãâ
+		// ì•„ì´í…œì´ ì‚¬ìš©ë˜ë„ë¡ í•¨ìˆ˜ í˜¸ì¶œ
 		UseItem(player);
 		return;
 	}

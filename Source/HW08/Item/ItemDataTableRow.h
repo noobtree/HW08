@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -23,15 +23,15 @@ struct HW08_API FItemDataTableRow : public FTableRowBase
 	GENERATED_USTRUCT_BODY()
 
 public:
-	// ¾ÆÀÌÅÛ °íÀ¯ ¾ÆÀÌµğ
-	UPROPERTY()
+	// ì•„ì´í…œ ê³ ìœ  ì•„ì´ë””
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FGuid guid;
 
-	// ¾ÆÀÌÅÛ ¼³Á¤À» Á¤ÀÇÇÑ ¾×ÅÍ Å¬·¡½º
-	UPROPERTY()
+	// ì•„ì´í…œ ì„¤ì •ì„ ì •ì˜í•œ ì•¡í„° í´ë˜ìŠ¤
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSoftClassPtr<AItemActor> itemActor;
 
-	// µå¶øÀ²
-	UPROPERTY()
-	float Probability = 0;
+	// ë“œëìœ¨
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float probability = 0;
 };

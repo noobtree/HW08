@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -26,31 +26,31 @@ public:
 public:
 #pragma region Input
 
-	// InputMappingContext ¿¡¼Â
+	// InputMappingContext ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputMappingContext> playerMappingContext;
 
-	// Move ÀÔ·ÂÀ» Á¤ÀÇÇÑ InputAction ¿¡¼Â
+	// Move ì…ë ¥ì„ ì •ì˜í•œ InputAction ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> moveInputAction;
 
-	// Jump ÀÔ·ÂÀ» Á¤ÀÇÇÑ InputAction ¿¡¼Â
+	// Jump ì…ë ¥ì„ ì •ì˜í•œ InputAction ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> jumpInputAction;
 
-	// Look ÀÔ·ÂÀ» Á¤ÀÇÇÑ InputAction ¿¡¼Â
+	// Look ì…ë ¥ì„ ì •ì˜í•œ InputAction ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> lookInputAction;
 
-	// double Jump ÀÔ·ÂÀ» Á¤ÀÇÇÑ InputAction ¿¡¼Â
+	// double Jump ì…ë ¥ì„ ì •ì˜í•œ InputAction ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> doubleJumpInputAction;
 
-	// ºñÇà °íµµ Á¶Á¤ ÀÔ·ÂÀ» Á¤ÀÇÇÑ InputAction ¿¡¼Â
+	// ë¹„í–‰ ê³ ë„ ì¡°ì • ì…ë ¥ì„ ì •ì˜í•œ InputAction ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> flyInputAction;
 
-	// °ø°İÀ» À§ÇÑ InputAction ¿¡¼Â
+	// ê³µê²©ì„ ìœ„í•œ InputAction ì—ì…‹
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> fireInputAction;
 
@@ -58,9 +58,33 @@ public:
 
 #pragma region UserInterface
 
+	// HUD UI
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UserInterface")
-	TSubclassOf<UUserWidget> mainHUDWidget;
+	TSubclassOf<UUserWidget> uiHUDWidget;
+
+	// Menu UI
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UserInterface")
+	TSubclassOf<UUserWidget> uiMenuWidget;
+
+	// ìƒì„±ëœ HUD UI ì¸ìŠ¤í„´ìŠ¤
+	UPROPERTY()
+	UUserWidget* hudInstance;
+	// ìƒì„±ëœ HUD UI ì¸ìŠ¤í„´ìŠ¤
+	UPROPERTY()
+	UUserWidget* menuInstance;
 
 #pragma endregion
 
+public:
+	UFUNCTION(Blueprintpure)
+	FORCEINLINE UUserWidget* GetHUDWidget() const { return hudInstance; }
+
+	UFUNCTION(BlueprintCallable)
+	void SetHUDWidgetVisibility(bool bNewIsVisibility);
+
+	UFUNCTION(BlueprintCallable)
+	void SetMenuWidgetVisibility(bool bIsRestart);
+
+	UFUNCTION(BlueprintCallable)
+	void StartGame();
 };

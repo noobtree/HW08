@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "DistortionVisionEffect.h"
@@ -12,7 +12,7 @@ UDistortionVisionEffect::UDistortionVisionEffect()
 
 void UDistortionVisionEffect::ApplyPlayerEffect(AActor* target) const
 {
-	// PostProcessVolume ¾×ÅÍ Ã£±â
+	// PostProcessVolume ì•¡í„° ì°¾ê¸°
 	if (AActor* actor = UGameplayStatics::GetActorOfClass(GetWorld(), APostProcessVolume::StaticClass()))
 	{
 		if (APostProcessVolume* volume = CastChecked<APostProcessVolume>(actor))
@@ -20,14 +20,14 @@ void UDistortionVisionEffect::ApplyPlayerEffect(AActor* target) const
 			UMaterialInterface* flashMaterial = LoadObject<UMaterialInterface>(nullptr, TEXT("/Game/Materials/Alcohol/MI_DistortionVision.MI_DistortionVision"));
 			FWeightedBlendable materialSetting(1.0f, flashMaterial);
 			volume->Settings.WeightedBlendables.Array.Add(materialSetting);
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("StunGrenade!!!!"));
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("DistortionVision!!!!"));
 		}
 	}
 }
 
 void UDistortionVisionEffect::RemovePlayerEffect(AActor* target) const
 {
-	// PostProcessVolume ¾×ÅÍ Ã£±â
+	// PostProcessVolume ì•¡í„° ì°¾ê¸°
 	if (AActor* actor = UGameplayStatics::GetActorOfClass(GetWorld(), APostProcessVolume::StaticClass()))
 	{
 		if (APostProcessVolume* volume = CastChecked<APostProcessVolume>(actor))
