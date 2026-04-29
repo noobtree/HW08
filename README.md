@@ -19,7 +19,9 @@ NBC\_Unreal08 - 차지훈\_HW08
 * 아이템을 사용하기 위해서는 총알을 발사하여 명중시키거나, 가까이 다가가면 자동으로 사용됨
 * 총알을 발사하는 경우 캐릭터의 체력을 사용.
 * 매 단계마다 일정 수 생성되는 목표물을 파괴하는 것이 목표
+<img width="736" height="416" alt="image" src="https://github.com/user-attachments/assets/84c2efe0-0aa3-4964-a23c-2ab422c1faef" />
 
+<img width="734" height="412" alt="image" src="https://github.com/user-attachments/assets/0024fa6d-0eba-44d3-b078-a2dd27589c1d" />
 
 
 ##### 3\) 아이템
@@ -32,5 +34,6 @@ NBC\_Unreal08 - 차지훈\_HW08
 * 섬광탄 : 화면이 가려지는 효과
 * 해골 : 이동, 회전 입력값을 반전시키는 효과
 
+<img width="647" height="340" alt="image" src="https://github.com/user-attachments/assets/16656ad3-eb71-4ef8-978a-3e8cce94a0f2" />
 
 
